@@ -2,28 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "healthy-meal-backend.fullname" . }}
-  env:
-  - name: DB_PASSWORD
-    valueFrom:
-      secretKeyRef: 
-        name: hmb-secret
-        key: db_password
-  - name: DB_USER
-    valueFrom:
-      secretKeyRef: 
-        name: hmb-secret
-        key: db_user
-  - name: OPENAI_KEY
-    valueFrom:
-      secretKeyRef: 
-        name: hmb-secret
-        key: openai_key
-  - name: JWT_SECRET
-    valueFrom:
-      secretKeyRef: 
-        name: hmb-secret
-        key: jwt_secret
-
   labels:
     {{- include "healthy-meal-backend.labels" . | nindent 4 }}
 spec:
@@ -44,3 +22,24 @@ spec:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
+          env:
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef: 
+                name: hmb-secret
+                key: db_password
+          - name: DB_USER
+            valueFrom:
+              secretKeyRef: 
+                name: hmb-secret
+                key: db_user
+          - name: OPENAI_KEY
+            valueFrom:
+              secretKeyRef: 
+                name: hmb-secret
+                key: openai_key
+          - name: JWT_SECRET
+            valueFrom:
+              secretKeyRef: 
+                name: hmb-secret
+                key: jwt_secret
