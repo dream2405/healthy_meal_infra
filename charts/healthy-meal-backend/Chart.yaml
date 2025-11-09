@@ -1,0 +1,7 @@
+apiVersion: v2
+name: healthy-meal-backend
+description: A Helm chart for the Healthy Meal Backend Spring Boot application
+version: 0.1.0
+# 이 차트가 기본적으로 배포하는 애플리케이션의 버전
+appVersion: "0.0.1-SNAPSHOT" 
+type: application

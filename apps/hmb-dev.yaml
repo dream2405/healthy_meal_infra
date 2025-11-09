@@ -1,0 +1,37 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  # 이 Application CR의 이름 (Argo CD UI에 표시됨)
+  name: hmb-dev
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  # 이 앱이 속할 Argo CD 프로젝트 (기본값은 'default')
+  project: default
+
+  # 소스 (Git 리포지토리)
+  source:
+    repoURL: ssh://git@github.com/dream2405/healthy_meal_infra.git
+    targetRevision: HEAD # 'main' 또는 'master' 브랜치를 추적
+    
+    # 사용할 Helm 차트의 경로
+    path: charts/healthy-meal-backend
+    helm:
+      # 차트에 덮어쓸 값 파일의 경로
+      valueFiles:
+        - ../../envs/dev.yaml
+
+  # 대상 (어디에 배포할지)
+  destination:
+    server: https://kubernetes.default.svc # Argo CD가 설치된 동일 클러스터
+    # 실제 앱(Deployment, Service 등)이 배포될 네임스페이스
+    namespace: hmb-dev
+
+  # 동기화 정책
+  syncPolicy:
+    automated:
+      prune: true    # Git에서 사라진 리소스는 클러스터에서도 삭제
+      selfHeal: true # 클러스터에서 수동 변경이 생기면 Git 상태로 자동 복구
+    syncOptions:
+      - CreateNamespace=true # 'hmb-dev' 네임스페이스가 없으면 자동 생성
