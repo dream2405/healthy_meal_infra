@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ .Values.volume.claimName }}
+  namespace: hmb-dev
+spec:
+  accessModes: {{ .Values.volume.accessModes }}
+  storageClassName: {{ .Values.volume.storageClassName }}
+  resources:
+    requests:
+      storage: {{ .Values.volume.size }}

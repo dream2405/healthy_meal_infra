@@ -14,6 +14,10 @@ spec:
       labels:
         {{- include "healthy-meal-backend.selectorLabels" . | nindent 8 }}
     spec:
+      volumes:
+      - name: volv
+        persistentVolumeClaim:
+          claimName: {{ .Values.volume.claimName }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -22,6 +26,9 @@ spec:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
+          volumeMounts:
+          - name: volv
+            mountPath: {{ .Values.volume.mountPath }}
           env:
           - name: DB_PASSWORD
             valueFrom:

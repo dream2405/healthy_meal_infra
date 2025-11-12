@@ -11,3 +11,12 @@ service:
 
 externalDatabase:
   host: "dummy-host.example.com"
+
+volume:
+  size: 8Gi
+  storageClassName: longhorn-dev
+  replicaCount: 1
+  claimName: longhorn-volv-pvc
+  mountPath: /data
+  accessModes:
+    - ReadWriteOnce
