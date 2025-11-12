@@ -18,7 +18,7 @@ parameters:
 #  backingImageChecksum: "SHA512 checksum of the backing image"
 #  unmapMarkSnapChainRemoved: "ignored"
 #  diskSelector: "ssd,fast"
-  nodeSelector: "storage-node"
+  # nodeSelector: "storage-node"
 #  recurringJobSelector: '[{"name":"snap-group", "isGroup":true},
 #                          {"name":"backup", "isGroup":false}]'
 #  nfsOptions: "soft,timeo=150,retrans=3"
