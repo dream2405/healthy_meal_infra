@@ -15,7 +15,7 @@ externalDatabase:
 volume:
   size: 8Gi
   storageClassName: longhorn-dev
-  replicaCount: 1
+  replicaCount: "1"
   claimName: longhorn-volv-pvc
   mountPath: /data
   accessModes:
