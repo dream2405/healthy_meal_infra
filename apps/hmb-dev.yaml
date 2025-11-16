@@ -13,7 +13,7 @@ spec:
   # 소스 (Git 리포지토리)
   source:
     repoURL: ssh://git@github.com/dream2405/healthy_meal_infra.git
-    targetRevision: feature/db_migration
+    targetRevision: HEAD
     
     # 사용할 Helm 차트의 경로
     path: charts/healthy-meal-backend
