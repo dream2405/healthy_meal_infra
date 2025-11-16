@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mysql-crds
+  namespace: argo-cd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/dream2405/healthy_meal_infra.git # 본인 레포 주소
+    targetRevision: HEAD
+    path: base/mysql-crds
+  destination:
+    server: 'https://kubernetes.default.svc'
+    # CRD는 네임스페이스가 필요 없지만, 명시적으로 지정
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

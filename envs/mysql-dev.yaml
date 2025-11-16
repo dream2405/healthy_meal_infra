@@ -1,0 +1,11 @@
+cluster:
+  secretName: mysql-secret
+  instances: 3
+  routerInstances: 1
+  tlsUseSelfSigned: true
+
+persistence:
+  storageClassName: longhorn-dev
+  size: 10Gi
+  accessModes:
+    - ReadWriteOnce

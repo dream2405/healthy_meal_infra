@@ -8,6 +8,7 @@ build/
 nohup.out
 src/main/resources/application-secret.*
 argo-cd/**/*-secret.yaml
+secret.sh
 
 ### STS ###
 .apt_generated

@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mysql-cluster
+  namespace: argo-cd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/dream2405/healthy_meal_infra.git # 본인 레포 주소
+    targetRevision: HEAD
+    
+    path: charts/my-database 
+    
+    helm:
+      valueFiles:
+        - ../../envs/mysql-dev.yaml
+        
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: hmb-dev 
+    
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

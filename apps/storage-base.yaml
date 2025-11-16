@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  # 이 Application CR의 이름 (Argo CD UI에 표시됨)
+  name: storage-base
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+
+spec:
+  project: default
+
+  source:
+    repoURL: ssh://git@github.com/dream2405/healthy_meal_infra.git
+    targetRevision: HEAD
+    path: base/storageclass
+
+  syncPolicy:
+    automated:
+      prune: true    # Git에서 사라진 리소스는 클러스터에서도 삭제
+      selfHeal: true # 클러스터에서 수동 변경이 생기면 Git 상태로 자동 복구
+    syncOptions:
+      - CreateNamespace=true # 'hmb-dev' 네임스페이스가 없으면 자동 생성

@@ -1,0 +1,4 @@
+apiVersion: v2
+name: my-database
+description: A GitOps-friendly chart for MySQL InnoDBCluster
+version: 0.1.0

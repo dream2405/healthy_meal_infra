@@ -1,0 +1,28 @@
+apiVersion: mysql.oracle.com/v2
+kind: InnoDBCluster
+metadata:
+  name: {{ .Release.Name }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  secretName: {{ .Values.cluster.secretName }}
+  instances: {{ .Values.cluster.instances | default 3 }}
+  router:
+    instances: {{ .Values.cluster.routerInstances | default 1 }}
+  tlsUseSelfSigned: {{ .Values.cluster.tlsUseSelfSigned | default true }}
+
+  datadirVolumeClaimTemplate:
+    {{- with .Values.persistence.accessModes }}
+    accessModes: 
+      {{- toYaml . | nindent 6 }}
+    {{- end }}
+    {{- if .Values.persistence.storageClassName }}
+    storageClassName: {{ .Values.persistence.storageClassName }}
+    {{- end }}
+    resources:
+      requests:
+        storage: {{ .Values.persistence.size }}
+
+  {{- with .Values.mycnf }}
+  mycnf: |
+    {{- . | nindent 4 }}
+  {{- end }}
