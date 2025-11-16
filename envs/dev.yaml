@@ -1,9 +1,7 @@
 # dev 환경에서만 사용할 값 (values.yaml을 덮어씀)
 image:
   repository: ghcr.io/dream2405/healthy_meal_backend
-  tag: "0.0.1-snapshot" # 개발 환경은 dev 태그 사용
-
+  tag: "" # 개발 환경은 dev 태그 사용
 replicaCount: 1 # 개발 환경은 1개만
-
 externalDatabase:
   host: "dream-server.taild71979.ts.net"
