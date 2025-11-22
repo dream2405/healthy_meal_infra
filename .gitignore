@@ -8,6 +8,7 @@ build/
 nohup.out
 src/main/resources/application-secret.*
 argo-cd/**/*-secret.yaml
+charts/mysql-cluster/init.sql
 secret.sh
 
 ### STS ###

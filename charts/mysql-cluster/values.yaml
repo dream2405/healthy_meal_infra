@@ -7,6 +7,10 @@ cluster:
   podSpec:
     nodeSelector:
       kubernetes.io/arch: amd64
+    volumes:
+      - name: init-script-vol
+        secret:
+          secretName: mysql-init-scripts
 
   router:
     instances: 1
