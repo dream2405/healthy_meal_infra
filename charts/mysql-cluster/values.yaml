@@ -8,11 +8,11 @@ cluster:
     nodeSelector:
       kubernetes.io/arch: amd64
 
-router:
-  instances: 1
-  podSpec:
-    nodeSelector:
-      kubernetes.io/arch: amd64
+  router:
+    instances: 1
+    podSpec:
+      nodeSelector:
+        kubernetes.io/arch: amd64
 
 persistence:
   storageClassName: longhorn-dev
