@@ -15,6 +15,10 @@ spec:
     targetRevision: HEAD
     path: base/storageclass
 
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: default
+
   syncPolicy:
     automated:
       prune: true    # Git에서 사라진 리소스는 클러스터에서도 삭제
