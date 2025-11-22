@@ -7,7 +7,8 @@ spec:
   secretName: {{ .Values.cluster.secretName }}
   instances: {{ .Values.cluster.instances | default 3 }}
   router:
-    instances: {{ .Values.cluster.routerInstances | default 1 }}
+    {{- toYaml .Values.cluster.router | nindent 4 }}
+  secretName: mysql-secret
   tlsUseSelfSigned: {{ .Values.cluster.tlsUseSelfSigned | default true }}
   
   {{- if .Values.cluster.podSpec }}
