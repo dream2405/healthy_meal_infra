@@ -11,6 +11,14 @@ spec:
     repoURL: https://mysql.github.io/mysql-operator/
     chart: mysql-operator
     targetRevision: 2.2.6
+    helm:
+      parameters:
+        - name: image.repository
+          value: container-registry.oracle.com/mysql/community-operator
+        - name: image.tag
+          value: 9.5.0-2.2.6-aarch64
+        - name: nodeSelector.kubernetes\.io/arch
+          value: arm64
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: mysql-operator
