@@ -11,7 +11,7 @@ spec:
     repoURL: https://github.com/dream2405/healthy_meal_infra.git # 본인 레포 주소
     targetRevision: HEAD
     
-    path: charts/my-database 
+    path: charts/mysql-cluster 
     
     helm:
       valueFiles:
