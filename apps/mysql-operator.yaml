@@ -14,9 +14,9 @@ spec:
     helm:
       parameters:
         - name: image.repository
-          value: container-registry.oracle.com/mysql/community-operator
+          value: container-registry.oracle.com/database/operator
         - name: image.tag
-          value: 9.5.0-2.2.6-aarch64
+          value: lrest-250919-arm64
         - name: nodeSelector.kubernetes\.io/arch
           value: arm64
   destination:
