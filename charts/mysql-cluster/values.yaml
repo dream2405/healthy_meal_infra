@@ -11,6 +11,11 @@ cluster:
       - name: init-script-vol
         secret:
           secretName: mysql-init-scripts
+    containers:
+      - name: mysql
+        volumeMounts:
+          - name: init-script-vol
+            mountPath: /docker-entrypoint-initdb.d
 
   router:
     instances: 1
