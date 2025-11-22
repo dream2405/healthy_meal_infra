@@ -1,6 +1,6 @@
 cluster:
   secretName: mysql-secret
-  instances: 2
+  instances: 1
   routerInstances: 1
   tlsUseSelfSigned: true
 
