@@ -1,8 +1,12 @@
 cluster:
   secretName: mysql-secret
-  instances: 3
+  instances: 2
   routerInstances: 1
   tlsUseSelfSigned: true
+  
+  podSpec:
+    nodeSelector:
+      kubernetes.io/arch: amd64
 
 persistence:
   storageClassName: longhorn-dev

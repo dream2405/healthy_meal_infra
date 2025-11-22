@@ -9,6 +9,11 @@ spec:
   router:
     instances: {{ .Values.cluster.routerInstances | default 1 }}
   tlsUseSelfSigned: {{ .Values.cluster.tlsUseSelfSigned | default true }}
+  
+  {{- if .Values.cluster.podSpec }}
+  podSpec:
+    {{- toYaml .Values.cluster.podSpec | nindent 4 }}
+  {{- end }}
 
   datadirVolumeClaimTemplate:
     {{- with .Values.persistence.accessModes }}
