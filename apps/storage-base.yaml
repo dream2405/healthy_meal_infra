@@ -1,7 +1,6 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  # 이 Application CR의 이름 (Argo CD UI에 표시됨)
   name: storage-base
   namespace: argocd
   finalizers:
