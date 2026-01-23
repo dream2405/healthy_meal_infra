@@ -16,6 +16,8 @@ spec:
         # https://container-registry.oracle.com/ords/f?p=113:4:18763918639397:::RP,4:P4_REPOSITORY,AI_REPOSITORY,P4_REPOSITORY_NAME,AI_REPOSITORY_NAME:1504,1504,MySQL%20Operator%20for%20Kubernetes,MySQL%20Operator%20for%20Kubernetes&cs=30QSDIBrLImEeIkZjVFf1BWD-THvm-OCDGdqPuBHGgHUEha9hBw6Pl0rWlwfFsW9z8A5c29MNjpMxqwtuQQof4g 참조!
         - name: image.tag
           value: 9.5.0-2.2.6
+        - name: envs.k8sClusterDomain
+          value: cluster.local
         # - name: nodeSelector.kubernetes\.io/arch
         #   value: arm64
   destination:
