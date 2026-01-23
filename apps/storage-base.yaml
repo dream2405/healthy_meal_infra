@@ -8,7 +8,6 @@ metadata:
 
 spec:
   project: default
-
   source:
     repoURL: ssh://git@github.com/dream2405/healthy_meal_infra.git
     targetRevision: HEAD
