@@ -7,15 +7,29 @@ cluster:
   podSpec:
     nodeSelector:
       kubernetes.io/arch: amd64
-    volumes:
-      - name: init-script-vol
-        secret:
-          secretName: mysql-init-scripts
     containers:
       - name: mysql
-        volumeMounts:
-          - name: init-script-vol
-            mountPath: /docker-entrypoint-initdb.d
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: rootPassword
+        - name: MYSQL_DATABASE
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: database
+        - name: MYSQL_USER
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: dbUser
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: dbPassword
 
   router:
     instances: 1
